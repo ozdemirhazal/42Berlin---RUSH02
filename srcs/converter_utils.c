@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include "rush02.h"
 
-extern int	g_is_error;
+extern int	error_status;
 
-char	*ft_get_value(char *key, char **numbers, char **values)
+char	*get_value_from_dict(char *key, char **numbers, char **values) //Used to find the value corresponding to a specific key.
 {
 	int	i;
 	char *empty_str;
@@ -15,13 +15,13 @@ char	*ft_get_value(char *key, char **numbers, char **values)
 			return (values[i]);
 		i++;
 	}
-	g_is_error = 1;
+	error_status = 1;
 	empty_str = (char *)malloc(1 * sizeof(char));
 	empty_str[0] = 0;
 	return (empty_str);
 }
 
-char	*ft_get_magnitude(char *str)
+char	*calculate_magnitude(char *str) //Used to determine the magnitude of a given number (e.g. 1,000, 10,000).
 {
 	int		n;
 	int		len;
@@ -42,7 +42,7 @@ char	*ft_get_magnitude(char *str)
 	return (magnitude);
 }
 
-char	*ft_get_magnitude_number(char *str)
+char	*extract_magnitude_number(char *str) //Creates an array to determine the magnitude of a given number.
 {
 	int		n;
 	int		i;
@@ -71,13 +71,13 @@ char	*ft_get_magnitude_number(char *str)
 	return (number);
 }
 
-int	only_zero(char *str)
+int	is_only_zeros(char *str) //Checks if a given string consists of only zeros.
 {
-	int	cur;
+	int	index;
 
-	cur = -1;
-	while (cur++, str[cur] != 0)
-		if (str[cur] != '0')
+	index = -1;
+	while (index++, str[index] != 0)
+		if (str[index] != '0')
 			return (1);
 	return (0);
 }

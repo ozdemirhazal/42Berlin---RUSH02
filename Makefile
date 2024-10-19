@@ -1,4 +1,4 @@
-SCRS = srcs/main.c srcs/converter.c srcs/converter_utils.c srcs/ft_utils.c srcs/parse_file.c srcs/parse_file_utils.c srcs/parse_dict.c srcs/parse_dict_utils.c
+SCRS = srcs/main.c srcs/converter_utils.c srcs/converter.c srcs/dict_line_parser.c srcs/dict_parser.c srcs/file_parser.c srcs/file_utils.c srcs/string_utils.c
 
 OBJS = ${SCRS:.c=.o}
 

@@ -7,11 +7,11 @@ int	print_num(char *str, int print_o, char *str_num);
 
 char		**g_numbers;
 char		**g_values;
-extern int	g_is_error;
+extern int	error_status;
 
-int	print_num_inf100(char *str, int print_o, char *str_num)
+int	print_num_inf100(char *str, int print_o, char *str_num) //Writing a given number (as a string) for numbers less than 100
 {
-	char	*str_cop;
+	char	*str_copy;
 	int		num;
 	int		sum;
 
@@ -19,40 +19,40 @@ int	print_num_inf100(char *str, int print_o, char *str_num)
 	if (num <= 20 || num % 10 == 0)
 	{
 		if (print_o)
-			ft_strcat_space(str_num, ft_get_value(str, g_numbers, g_values));
-		return (ft_strlen(ft_get_value(str, g_numbers, g_values)) + 1);
+			ft_strcat_space(str_num, get_value_from_dict(str, g_numbers, g_values));
+		return (ft_strlen(get_value_from_dict(str, g_numbers, g_values)) + 1);
 	}
 	else if (num <= 100)
 	{
 		sum = 0;
-		str_cop = ft_strdup(str);
-		str_cop[1] = '0';
-		sum += print_num(str_cop, print_o, str_num);
+		str_copy = ft_strdup(str);
+		str_copy[1] = '0';
+		sum += print_num(str_copy, print_o, str_num);
 		sum += print_num(str + 1, print_o, str_num);
-		free(str_cop);
+		free(str_copy);
 		return (sum);
 	}
 	return (0);
 }
 
-int	print_num_sup100(char *str, int print_o, char *str_num)
+int	print_num_sup100(char *str, int print_o, char *str_num) //To write a given number for numbers greater than 100.
 {
 	int		sum;
-	char	*magnum;
+	char	*magnitude_str;
 	char	*rest;
 
 	sum = 0;
-	magnum = ft_get_magnitude_number(str);
-	sum += print_num(magnum, print_o, str_num);
-	rest = ft_get_value(ft_get_magnitude(str), g_numbers, g_values);
+	magnitude_str = extract_magnitude_number(str);
+	sum += print_num(magnitude_str, print_o, str_num);
+	rest = get_value_from_dict(calculate_magnitude(str), g_numbers, g_values);
 	if (print_o)
 		ft_strcat_space(str_num, rest);
-	sum += print_num(str + ft_strlen(magnum), print_o, str_num);
+	sum += print_num(str + ft_strlen(magnitude_str), print_o, str_num);
 	sum += ft_strlen(rest) + 1;
 	return (sum);
 }
 
-int	print_num(char *str, int print_o, char *str_num)
+int	print_num(char *str, int print_o, char *str_num) //A generic function to print a given number (as a string).
 {
 	int		len;
 
@@ -68,30 +68,30 @@ int	print_num(char *str, int print_o, char *str_num)
 	return (0);
 }
 
-char	*get_written_num(char *str, const char *dict_pathname)
+char	*get_converted_number(char *str, const char *dict_path) //Converting the given number (as a string) to its word equivalent.
 {
 	char	*str_num;
 	int		str_size;
-	int		cur;
+	int		index;
 	char	**dict_file_content;
 
-	if (ft_get_lines(dict_pathname, &dict_file_content) != 0
-		|| parse_dict_string(dict_file_content, &g_numbers, &g_values) != 0)
+	if (ft_get_lines(dict_path, &dict_file_content) != 0
+		|| parse_dictionary_lines(dict_file_content, &g_numbers, &g_values) != 0)
 	{
-		g_is_error = 1;
+		error_status = 1;
 		return (0);
 	}
-	cur = 0;
-	if (only_zero(str) == 0)
-		str_size = ft_strlen(ft_get_value("0", g_numbers, g_values));
+	index = 0;
+	if (is_only_zeros(str) == 0)
+		str_size = ft_strlen(get_value_from_dict("0", g_numbers, g_values));
 	else
 		str_size = print_num(str, 0, "");
 	str_num = malloc(sizeof(char) * (str_size + 1));
-	cur = -1;
-	while (cur++ < str_size)
-		str_num[cur] = 0;
-	if (only_zero(str) == 0)
-		ft_strcat_space(str_num, ft_get_value("0", g_numbers, g_values));
+	index = -1;
+	while (index++ < str_size)
+		str_num[index] = 0;
+	if (is_only_zeros(str) == 0)
+		ft_strcat_space(str_num, get_value_from_dict("0", g_numbers, g_values));
 	else
 		print_num(str, 1, str_num);
 	return (str_num);
