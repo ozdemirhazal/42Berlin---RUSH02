@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Hazal/Desktop/RUSH02/42Berlin-RUSH02",
-      "program": "c:/Users/Hazal/Desktop/RUSH02/42Berlin-RUSH02/build/Debug/outDebug",
+      "cwd": "c:/Users/Hazal/Desktop/42Berlin-RUSH02",
+      "program": "c:/Users/Hazal/Desktop/42Berlin-RUSH02/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

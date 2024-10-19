@@ -1,20 +1,23 @@
+SCRS = srcs/main.c srcs/converter.c srcs/converter_utils.c srcs/ft_utils.c srcs/parse_file.c srcs/parse_file_utils.c srcs/parse_dict.c srcs/parse_dict_utils.c
+
+OBJS = ${SCRS:.c=.o}
+
 NAME = rush-02
 
-SRC = main.c dict_parser.c number_converter.c utils.c
+CC = gcc -Wall -Wextra -Werror -I includes
 
-OBJ = $(SRC:.c=.o)
-
-CFLAGS = -Wall -Wextra -Werror
+%.o: %.c
+	$(CC) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	gcc $(CFLAGS) -o $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+	$(CC) -o $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+.PHONY: all clean fclean
