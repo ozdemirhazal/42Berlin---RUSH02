@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "parse_dict_utils.h"
+#include "rush02.h"
 
 extern int	g_is_error;
 

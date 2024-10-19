@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "ft_utils.h"
+#include "rush02.h"
 
 extern int	g_is_error;
 

@@ -1,0 +1,17 @@
+char	*ft_get_value(char *key, char **numbers, char **values);
+char	*ft_get_magnitude(char *str);
+char	*ft_get_magnitude_number(char *str);
+int		only_zero(char *str);
+char	*get_written_num(char *str, const char *dict_pathname);
+int		ft_strlen(char *str);
+void	ft_strcat_space(char *dest, char *src);
+char	*ft_strdup(char *src);
+int		ft_strcmp(char *s1, char *s2);
+int		ft_atoi(char *str);
+char	*get_number(int *cur, char *str, char **number);
+int		get_value_size(int cur, char *str);
+int		is_only_space(int cur, char *str);
+int	parse_dict_string(char **strs, char ***nums, char ***vals);
+void	*ft_get_line_lens_loop(int file, int *file_sizes);
+int		ft_get_lines_loop(int file, int *file_sizes, char ***lines);
+int	ft_get_lines(const char *pathname, char ***lines);

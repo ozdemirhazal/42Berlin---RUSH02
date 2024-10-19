@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "ft_utils.h"
-#include "converter_utils.h"
-#include "parse_file.h"
-#include "parse_dict.h"
+#include "rush02.h"
 
 int	print_num(char *str, int print_o, char *str_num);
 

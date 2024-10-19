@@ -2,7 +2,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "parse_file_utils.h"
+#include "rush02.h"
 
 int	ft_get_line_number(const char *pathname)
 {

@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "converter.h"
-#include "ft_utils.h"
+#include "rush02.h"
 
 int	g_is_error = 0;
 
